@@ -1,13 +1,12 @@
-
-=======VisIUT3
+VisIUT3
 =======
 
-Bonjour à tous
+Bonjour ï¿½ tous
 
-Voici un projet qui a débuté en 2009 par cinq étudiant en informatique
-à l'IUT de Reims.
+Voici un projet qui a dï¿½butï¿½ en 2009 par cinq ï¿½tudiant en informatique
+ï¿½ l'IUT de Reims.
 
 Visiut3 est la refonte d'un logiciel de traitement d'images.
 
-Plus de précisions plus tard.
+Plus de prï¿½cisions plus tard.
 
