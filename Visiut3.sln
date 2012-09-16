@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Visiut3", "Visiut3\Visiut3.vcxproj", "{BFFCD72D-4DFE-4F5A-974C-E9BD1731F20E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Visiut3_install", "Visiut3_install\Visiut3_install.vdproj", "{FDAE72E7-75AA-4466-A7F8-74AA98E31A52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFFCD72D-4DFE-4F5A-974C-E9BD1731F20E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BFFCD72D-4DFE-4F5A-974C-E9BD1731F20E}.Debug|Win32.Build.0 = Debug|Win32
+		{BFFCD72D-4DFE-4F5A-974C-E9BD1731F20E}.Release|Win32.ActiveCfg = Release|Win32
+		{BFFCD72D-4DFE-4F5A-974C-E9BD1731F20E}.Release|Win32.Build.0 = Release|Win32
+		{FDAE72E7-75AA-4466-A7F8-74AA98E31A52}.Debug|Win32.ActiveCfg = Debug
+		{FDAE72E7-75AA-4466-A7F8-74AA98E31A52}.Debug|Win32.Build.0 = Debug
+		{FDAE72E7-75AA-4466-A7F8-74AA98E31A52}.Release|Win32.ActiveCfg = Release
+		{FDAE72E7-75AA-4466-A7F8-74AA98E31A52}.Release|Win32.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
