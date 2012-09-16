@@ -45,6 +45,7 @@ void Visiut3::DisplayViaImage(QImage * _picture){
     ui.graphicsView->setFixedSize(m_controller->GetQImage()->width(),m_controller->GetQImage()->height());
     ui.graphicsView->setMouseTracking(true);
     ui.graphicsView->viewport()->setMouseTracking(true);
+	ui.graphicsView->show();
 }
 
 /*
@@ -120,6 +121,7 @@ void Visiut3::DisplayVierge(int width ,int height)
     ui.graphicsView->setFixedSize(width,height);
     ui.graphicsView->setMouseTracking(true);
     ui.graphicsView->viewport()->setMouseTracking(true);
+	ui.graphicsView->show();
 
 }
 
