@@ -16,15 +16,15 @@ class PictureGray : public Picture{
         PictureGray();
         PictureGray(unsigned char ** _picture, const std::string & _name, unsigned int _nbLines, unsigned int _nbColumns, int _deph, int _format, bool _color);
         PictureGray(const PictureGray & _picture);
-        PictureGray operator =(const PictureGray & _picture);
+        PictureGray & operator =(const PictureGray & _picture);
         virtual ~PictureGray();
-        unsigned char ** GetPictureGray()const;
+        unsigned char ** getPictureGray()const;
         int getPixel(unsigned int _x,unsigned int _y) const;
-        void SetPictureGray(unsigned char ** _picture);
-        virtual void SetPixel(unsigned int _x, unsigned int _y, int _value);
-        virtual void Negative();
-        virtual void VerticalMirror();
-        virtual void HorizontalMirror();
+        PictureGray * setPictureGray(unsigned char ** _picture);
+        virtual PictureGray * setPixel(unsigned int _x, unsigned int _y, int _value);
+        virtual void negative();
+        virtual void verticalMirror();
+        virtual void horizontalMirror();
 
 };
 

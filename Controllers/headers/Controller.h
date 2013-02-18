@@ -16,9 +16,6 @@
  //! Class Controleur.
  /*! This class gets back and extract information from the GUI in order to given this information at the Image class.
 	 She also allows to reconstruc a Qimage object  from an Image Object */
-
-
-
 class Controller{
     private :
        QImage *image;
@@ -46,14 +43,14 @@ class Controller{
 		//! Constructor
 		/*! Construct a new Controleur Object with an Image<uchar> argument in order to built a grayscale image*/ 
         /**
-                 *	@param _picture Allows to manipulate the 8-bits image(Grayscale Image)
+         *	@param _picture Allows to manipulate the 8-bits image(Grayscale Image)
 		 */
         Controller(const PictureGray & _picture);//NG8
 
 		//! Constructor
 		/*! Construct a new Controleur Object with an Image<uint> argument in order to built a color image*/
 		/**
-                 *  @param _picture I Allows to manipulate the 32-bits image(color Image)
+         *  @param _picture I Allows to manipulate the 32-bits image(color Image)
          */
         Controller(const PictureColor & _picture); //RGB32
 
@@ -68,37 +65,37 @@ class Controller{
 		/*! It's  a destructor ...*/
         ~Controller();
 
-                //! GetQImage
+        //! GetQImage
 		/*! Return a QImage Object*/		
-        QImage * GetQImage()const;
+        QImage * getQImage()const;
 
-                //! GetPicture
+        //! GetPicture
 		/*! Return an Image Object */		
-        QImage & GetPicture()const;
+        QImage & getPicture()const;
 
 
         //! getHauteur
         /*! Return the Hauteur value of the QImage object */
-        unsigned int GetNbLines()const;
+        unsigned int getNbLines()const;
 
         //! getLargeur
         /*! Return the Largeur value of the QImage object */
-        unsigned int GetNbColumns()const;
+        unsigned int getNbColumns()const;
 
         //!GetDeph
         /*! Return the Profondeur value of the QImage object */
-        int GetDeph()const;
+        int getDeph()const;
 
         //! Methode getFormat
         /*! Return  an integer value of the QImage object wich is representing the value of  the format 
 			Check http://doc.qt.nokia.com/4.6/qimage.html#Format-enum in order to know the possible value.
 			Otherwise :  value = 3 : The image is stored using 8-bit indexes into a colormap.
-                                     value = 4 : The image is stored using a 32-bit RGB format (0xffRRGGBB).*/
-        unsigned int GetFormat()const;
+                         value = 4 : The image is stored using a 32-bit RGB format (0xffRRGGBB).*/
+        unsigned int getFormat()const;
 
         //!GetColor
         /*! Return true if the QImage is in color, otherwise, return false*/
-        bool GetColor()const;
+        bool isColor()const;
 
         //!GetPixel
         /*! this method return the pixel value at the given position */
@@ -106,11 +103,11 @@ class Controller{
          * @param unsigned int is the x value of the position
          * @param unsigned int is the y value of the position
 		 */
-        int GetPixel(unsigned int _x, unsigned int _y)const;
+        int getPixel(unsigned int _x, unsigned int _y)const;
 
-		QFileInfo * GetFileInfo()const;
+        QFileInfo * getFileInfo()const;
 
-		BackNext GetBackNext()const;
+        BackNext getBackNext()const;
         //! Operator =
         /*! Overriding of the operator = */
 		/**
@@ -123,23 +120,23 @@ class Controller{
 		/**
 		 * @param Qstring is the name of the Image
 		 */
-        bool Save(const QString & _path);
+        bool save(const QString & _path);
 
-        void Treatment(int _treatment);
+        void treatment(int _treatment);
 
-        void ** GetData()const;
+        void ** getData()const;
 
-        void SetPicture(const PictureColor & _picture);
+        Controller * setPicture(const PictureColor & _picture);
 
-        void SetPicture(const PictureGray & _picture);
+        Controller * setPicture(const PictureGray & _picture);
 
-		void SetFileInfo(QFileInfo * _fileInfo);
+        Controller * setFileInfo(QFileInfo * _fileInfo);
 
-		void SetQImage(QImage * _image);
+        Controller * setQImage(QImage * _image);
 
-        void Back();
+        void back();
 
-        void Next();
+        void next();
 
 };
 

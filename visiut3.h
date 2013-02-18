@@ -20,17 +20,17 @@ private:
 public:
 	Visiut3(QWidget *parent = 0, Qt::WFlags flags = 0);
 	~Visiut3();
-	QImage * GetImage()const;
-	void DisplayViaImage(QImage * _picture);
-	void DisplayViaChemin(const QString & _path);
+    QImage * getImage()const;
+    void displayViaImage(QImage * _picture);
+    void displayViaChemin(const QString & _path);
 	QImage * viewToImage();
-	void DisplayVierge(int _x, int _y);
+    void displayVierge(int _x, int _y);
 	void miseAZero();
 
 protected:
-	void ChangeEvent(QEvent * _e);
-	void CloseEvent(QCloseEvent * _e);
-	void ContextMenuEvent(QContextMenuEvent * _e);
+    void changeEvent(QEvent * _e);
+    void closeEvent(QCloseEvent * _e);
+    void contextMenuEvent(QContextMenuEvent * _e);
 
 public slots:
 	void on_ActionOpen_triggered();

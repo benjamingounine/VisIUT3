@@ -24,26 +24,26 @@ class Picture{
         Picture();
         Picture(const std::string & _name, unsigned int _nbLines, unsigned int _nbColumns, int _deph, int _format, bool _color);
         virtual ~Picture();
-        std::string GetName()const;
-        unsigned int GetNbLines()const;
-        unsigned int GetNbColumns()const;
-        int GetDeph()const;
-        int GetFormat()const;
-        bool GetColor()const;
-        void SetName(const std::string & _name);
-        void SetNbLines(unsigned int _nbLines);
-        void SetColumns(unsigned int _nbColumns);
-        void SetDeph(int _deph);
-        void SetFormat(int _format);
-        void SetColor(bool _color);
-        virtual void SetPixel(unsigned int _x, unsigned int _y, int _value) = 0;
-        bool IsGray () const;
-        virtual void Negative() = 0;
-        virtual void VerticalMirror() = 0;
-        virtual void HorizontalMirror() = 0;
+        std::string getName()const;
+        unsigned int getNbLines()const;
+        unsigned int getNbColumns()const;
+        int getDeph()const;
+        int getFormat()const;
+        bool getColor()const;
+        Picture * setName(const std::string & _name);
+        Picture * setNbLines(unsigned int _nbLines);
+        Picture * setColumns(unsigned int _nbColumns);
+        Picture * setDeph(int _deph);
+        Picture * setFormat(int _format);
+        Picture * setColor(bool _color);
+        virtual void setPixel(unsigned int _x, unsigned int _y, int _value) = 0;
+        bool isGray () const;
+        virtual void negative() = 0;
+        virtual void verticalMirror() = 0;
+        virtual void horizontalMirror() = 0;
 
 	protected:
-		void FreePicture(void** _picture);
+        void freePicture(void** _picture);
 
 };
 
