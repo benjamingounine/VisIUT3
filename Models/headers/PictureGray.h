@@ -21,7 +21,7 @@ class PictureGray : public Picture{
         unsigned char ** getPictureGray()const;
         int getPixel(unsigned int _x,unsigned int _y) const;
         PictureGray * setPictureGray(unsigned char ** _picture);
-        virtual PictureGray * setPixel(unsigned int _x, unsigned int _y, int _value);
+        virtual void setPixel(unsigned int _x, unsigned int _y, int _value);
         virtual void negative();
         virtual void verticalMirror();
         virtual void horizontalMirror();

@@ -113,10 +113,8 @@ PictureGray * PictureGray::setPictureGray(unsigned char ** _picture){
     return this;
 }
 
-PictureGray * PictureGray::setPixel(unsigned int _x, unsigned int _y, int _value){
+void PictureGray::setPixel(unsigned int _x, unsigned int _y, int _value){
     this->m_picture[_x][_y] = _value;
-
-    return this;
 }
 
 void PictureGray::negative(){
@@ -127,7 +125,7 @@ void PictureGray::negative(){
 
 void PictureGray::verticalMirror(){
     unsigned char ** new_picture = Traitement<unsigned char>::verticalMirror(this->m_picture, this->m_nbColumns, this->m_nbLines);
-    this-fFreePicture((void**)this->m_picture);
+    this->freePicture((void**)this->m_picture);
     this->m_picture = new_picture;
 }
 

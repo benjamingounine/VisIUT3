@@ -115,7 +115,7 @@ BackNext Controller::getBackNext()const{
     return this->m_backNext;
 }
 
-bool Controller::getColor()const{
+bool Controller::isColor()const{
     //retourne vrai(1) si image couleur
     return !this->image->isGrayscale();
 }
@@ -233,29 +233,29 @@ bool Controller::save(const QString & _path){
 
 void Controller::treatment(int _treatment){
     if(this->isColor()){
-        PictureColor picture(((unsigned int **)this->getData()), "", this->getNbLines(), this->getNbColumns(), this->getDeph(), this->getFormat(), this->getColor());
+        PictureColor picture(((unsigned int **)this->getData()), "", this->getNbLines(), this->getNbColumns(), this->getDeph(), this->getFormat(), this->isColor());
         if(_treatment == 0){
-            picture.Negative();
+            picture.negative();
         }
         else if(_treatment == 1){
-            picture.HorizontalMirror();
+            picture.horizontalMirror();
         }
         else{
-            picture.VerticalMirror();
+            picture.verticalMirror();
         }
 
         this->setPicture(picture);
     }
     else{
-        PictureGray picture(((unsigned char **)this->getData()), "", this->getNbLines(), this->getNbColumns(), this->getDeph(), this->getFormat(), this->getColor());
+        PictureGray picture(((unsigned char **)this->getData()), "", this->getNbLines(), this->getNbColumns(), this->getDeph(), this->getFormat(), this->isColor());
         if(_treatment == 0){
-            picture.Negative();
+            picture.negative();
         }
         else if(_treatment == 1){
-            picture.HorizontalMirror();
+            picture.horizontalMirror();
         }
         else{
-            picture.VerticalMirror();
+            picture.verticalMirror();
         }
 
         this->setPicture(picture);
@@ -265,7 +265,7 @@ void Controller::treatment(int _treatment){
     this->save(QString(this->m_backNext.getCurrentStatePathName().data()));
 }
 
-void Controller::Back(){
+void Controller::back(){
     if(this->m_backNext.getIndexCurrentStatePathName() > 0){
         delete this->image;
         this->m_backNext.removeLastState();
@@ -273,7 +273,7 @@ void Controller::Back(){
     }
 }
 
-void Controller::Next(){
+void Controller::next(){
     if(this->m_backNext.getIndexCurrentStatePathName() > 0){
         delete this->image;
         this->m_backNext.addState(this->m_backNext.getIndexCurrentStatePathName()+1);

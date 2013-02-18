@@ -12,7 +12,7 @@ Visiut3::Visiut3(QWidget *parent, Qt::WFlags flags)
 	//Resize de la fenetre
     this->resize(QApplication::desktop()->width(),QApplication::desktop()->height());
 	//Affichage d'une fenetre vierge de 800*600
-    this->DisplayVierge(800,600);
+    this->displayVierge(800,600);
 	//Message de bienvenue
     ui.statusBar->showMessage("Bienvenue sur VisIUT 3");
 }
@@ -20,29 +20,29 @@ Visiut3::Visiut3(QWidget *parent, Qt::WFlags flags)
 Visiut3::~Visiut3()
 {
 	if(m_controller != NULL){
-		m_controller->GetBackNext().RemoveTemporyFile();
+        m_controller->getBackNext().removeTemporyFile();
 		delete m_controller;
 	}
 	if(m_scene != NULL)
 		delete m_scene;
 }
 
-QImage * Visiut3::GetImage()const{
-	return m_controller->GetQImage();
+QImage * Visiut3::getImage()const{
+    return m_controller->getQImage();
 }
 
 
-void Visiut3::DisplayViaImage(QImage * _picture){
+void Visiut3::displayViaImage(QImage * _picture){
 	this->m_scene = new MainScene();
     QLabel * lab = new QLabel;
     QPixmap * pix = new QPixmap(QPixmap::fromImage(*_picture));
 
     lab->setPixmap(*pix);
-    this->m_scene->setImage(m_controller->GetQImage());
+    this->m_scene->setImage(m_controller->getQImage());
     this->m_scene->addPixmap(*pix);
 
     ui.graphicsView->setScene(this->m_scene);
-    ui.graphicsView->setFixedSize(m_controller->GetQImage()->width(),m_controller->GetQImage()->height());
+    ui.graphicsView->setFixedSize(m_controller->getQImage()->width(),m_controller->getQImage()->height());
     ui.graphicsView->setMouseTracking(true);
     ui.graphicsView->viewport()->setMouseTracking(true);
 	ui.graphicsView->show();
@@ -52,7 +52,7 @@ void Visiut3::DisplayViaImage(QImage * _picture){
 Affichage à l'écran de l'image à partir du chemin absolue
 Choix du graphicsView pour sa simplicité (DockWidget utilisé auparavant)
 */
-void Visiut3::DisplayViaChemin(const QString & chemin)
+void Visiut3::displayViaChemin(const QString & chemin)
 {
 	if(m_controller != NULL)
 		delete m_controller;
@@ -63,11 +63,11 @@ void Visiut3::DisplayViaChemin(const QString & chemin)
     lab->setPixmap(*pix);
 
     this->m_scene = new MainScene();
-    this->m_scene->setImage(m_controller->GetQImage());
+    this->m_scene->setImage(m_controller->getQImage());
     this->m_scene->addPixmap(*pix);
 
     ui.graphicsView->setScene(this->m_scene);
-    ui.graphicsView->setFixedSize(m_controller->GetQImage()->width(), m_controller->GetQImage()->height());
+    ui.graphicsView->setFixedSize(m_controller->getQImage()->width(), m_controller->getQImage()->height());
 
     ui.graphicsView->setMouseTracking(true);
     ui.graphicsView->viewport()->setMouseTracking(true);
@@ -88,25 +88,25 @@ QImage* Visiut3::viewToImage()
     QPainter painter;
 
     // On va dessiner dans l'image...
-    painter.begin(m_controller->GetQImage());
+    painter.begin(m_controller->getQImage());
 
     // On demande au graphics view de se dessiner dans l'image
     ui.graphicsView->render(&painter);
 
     painter.end();
 
-    return m_controller->GetQImage();
+    return m_controller->getQImage();
 }
 
-void Visiut3::DisplayVierge(int width ,int height)
+void Visiut3::displayVierge(int width ,int height)
 {
     //Instanciation de l'image et fond blanc
-    m_controller->SetQImage(new QImage(width,height,QImage::Format_RGB32));
+    m_controller->setQImage(new QImage(width,height,QImage::Format_RGB32));
     this->miseAZero();
 
     //Image et Label
     QLabel * lab = new QLabel;
-    QPixmap * pix = new QPixmap(QPixmap::fromImage(*(m_controller->GetQImage())));
+    QPixmap * pix = new QPixmap(QPixmap::fromImage(*(m_controller->getQImage())));
     lab->setPixmap(*pix);
 
     //Instanciation du label
@@ -115,7 +115,7 @@ void Visiut3::DisplayVierge(int width ,int height)
     this->m_scene->addPixmap(*pix);
     this->m_scene->setSelection("NOTHING");
     this->m_scene->setIsAffiche(false);
-    this->m_scene->setImage(m_controller->GetQImage());
+    this->m_scene->setImage(m_controller->getQImage());
 
     ui.graphicsView->setScene(this->m_scene);
     ui.graphicsView->setFixedSize(width,height);
@@ -127,11 +127,11 @@ void Visiut3::DisplayVierge(int width ,int height)
 
 void Visiut3::miseAZero()
 {
-    for (int i = 0; i< m_controller->GetQImage()->width() ; i++)
+    for (int i = 0; i< m_controller->getQImage()->width() ; i++)
     {
-        for (int j = 0 ; j < m_controller->GetQImage()->height() ; j++)
+        for (int j = 0 ; j < m_controller->getQImage()->height() ; j++)
         {
-            m_controller->GetQImage()->setPixel(i,j,qRgb(255,255,255));
+            m_controller->getQImage()->setPixel(i,j,qRgb(255,255,255));
         }
     }
 }
@@ -145,7 +145,7 @@ void Visiut3::on_ActionOpen_triggered()
         if(chemin != "")
         {
             ui.statusBar->showMessage("Image charge depuis "+chemin);
-            this->DisplayViaChemin(chemin);
+            this->displayViaChemin(chemin);
 			if(m_controller != NULL)
 				delete m_controller;
 			m_controller = new Controller(chemin);
@@ -158,28 +158,28 @@ void Visiut3::on_ActionOpen_triggered()
         {
             chemin = QFileDialog::getOpenFileName(this, "Ouvrir un fichier", QString(), "Images (*.png *.gif *.jpg *.jpeg *.JPG *.JPEG *.bmp)");
             ui.statusBar->showMessage("Image charge depuis "+chemin);
-            this->DisplayViaChemin(chemin);
+            this->displayViaChemin(chemin);
             this->m_scene->setIsAffiche(true);
         }
     }
 }
 
 void Visiut3::on_ActionProperties_triggered(){
-	 if(!m_controller->GetQImage()->isNull())
+     if(!m_controller->getQImage()->isNull())
     {
         //Nombre de pixel
-        int nbpix = m_controller->GetQImage()->width() * m_controller->GetQImage()->height();
+        int nbpix = m_controller->getQImage()->width() * m_controller->getQImage()->height();
         //Affichage des informations
         QMessageBox::information(this,
                                  "Proprietes",
-                                 "Nom du fichier : "+m_controller->GetFileInfo()->fileName()+"\n"+
+                                 "Nom du fichier : "+m_controller->getFileInfo()->fileName()+"\n"+
                                  /*"Chemin absolu : "+chemin+"\n"+*/
-                                 "Taille : "+QString::number(m_controller->GetQImage()->width(),10)+"px par "+QString::number(m_controller->GetQImage()->height(),10)+"px\n"+
-                                 "Profondeur : "+QString::number(m_controller->GetQImage()->depth(),10)+" bits\n"+
+                                 "Taille : "+QString::number(m_controller->getQImage()->width(),10)+"px par "+QString::number(m_controller->getQImage()->height(),10)+"px\n"+
+                                 "Profondeur : "+QString::number(m_controller->getQImage()->depth(),10)+" bits\n"+
                                  "Nombre de pixels : "+QString::number(nbpix)+" pixels\n"+
                                  "Poids theorique : "+QString::number(nbpix/1024)+" Ko\n"+
-                                 "Poids reels : "+QString::number(m_controller->GetFileInfo()->size()/1024)+" Ko\n"+
-                                 "Date de derniere modification : "+m_controller->GetFileInfo()->lastModified().toString()+
+                                 "Poids reels : "+QString::number(m_controller->getFileInfo()->size()/1024)+" Ko\n"+
+                                 "Date de derniere modification : "+m_controller->getFileInfo()->lastModified().toString()+
                                  ""
                                  );
     }
@@ -191,10 +191,10 @@ void Visiut3::on_ActionProperties_triggered(){
 
 void Visiut3::on_ActionNegative_triggered()
 {
-    if(!m_controller->GetQImage()->isNull())
+    if(!m_controller->getQImage()->isNull())
     {
-		m_controller->Treatment(0);
-        DisplayViaImage(m_controller->GetQImage());
+        m_controller->treatment(0);
+        displayViaImage(m_controller->getQImage());
     }
     else
     {
@@ -213,13 +213,13 @@ void Visiut3::on_ActionAbout_triggered()
 void Visiut3::on_ActionMirror_triggered()
 {
     //Si l'image n'est pas null
-    if(!m_controller->GetQImage()->isNull())
+    if(!m_controller->getQImage()->isNull())
     {
 		//Exécution de la fonction qui inverse ...
-        m_controller->Treatment(1);
+        m_controller->treatment(1);
 
         //On affiche l'image.
-        this->DisplayViaImage(m_controller->GetQImage());
+        this->displayViaImage(m_controller->getQImage());
     }
 }
 
@@ -236,7 +236,7 @@ void Visiut3::on_ActionNew_triggered()
         int i = neW->exec();
         if (i == QDialog::Accepted)
         {
-            this->DisplayVierge(neW->getWidth(), neW->getHeight());
+            this->displayVierge(neW->getWidth(), neW->getHeight());
             //m_scene->setIsAffiche(true);
         }
     }
@@ -249,7 +249,7 @@ void Visiut3::on_ActionNew_triggered()
             int i = neW->exec();
             if (i == QDialog::Accepted)
             {
-                this->DisplayVierge(neW->getWidth(), neW->getHeight());
+                this->displayVierge(neW->getWidth(), neW->getHeight());
             }
         }
     }
@@ -265,7 +265,7 @@ void Visiut3::on_ActionSave_triggered()
     //Choix du chemin d'enregistrement
     QString fichier = QFileDialog::getSaveFileName(this, "Enregistrer", QString(), "Tout");
     //m_controller->SetQImage(this->viewToImage());
-    m_controller->Save(fichier);
+    m_controller->save(fichier);
 }
 
 /*
@@ -273,14 +273,14 @@ void Visiut3::on_ActionSave_triggered()
 */
 void Visiut3::on_ActionCancel_triggered()
 {
-	m_controller->Back();
-    this->DisplayViaImage(m_controller->GetQImage());
+    m_controller->back();
+    this->displayViaImage(m_controller->getQImage());
 }
 
 /*
 Gestion de la fermeture du programme
 */
-void Visiut3::CloseEvent(QCloseEvent *event)
+void Visiut3::closeEvent(QCloseEvent *event)
 {
  int ret = QMessageBox::question(this,"Quitter?","Voulez-vous vraiment quitter?", QMessageBox::Yes | QMessageBox::No);
      if (ret == QMessageBox::Yes)
@@ -292,7 +292,7 @@ void Visiut3::CloseEvent(QCloseEvent *event)
 /*
 Gestion du menu contextuel lors d'un clique droit avec la souris
 */
-void Visiut3::ContextMenuEvent(QContextMenuEvent * event)
+void Visiut3::contextMenuEvent(QContextMenuEvent * event)
 {
    QMenu menu;
    menu.addAction(ui.actionPropriete);
@@ -303,7 +303,7 @@ void Visiut3::ContextMenuEvent(QContextMenuEvent * event)
 /*
 Présent des le début. Aucune idée de son utilité...
 */
-void Visiut3::ChangeEvent(QEvent *e)
+void Visiut3::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
     switch (e->type()) {

@@ -124,10 +124,8 @@ PictureColor * PictureColor::setPictureColor(unsigned int **_picture){
     return this;
 }
 
-PictureColor * PictureColor::setPixel(unsigned int _x, unsigned int _y, int _value){
+void PictureColor::setPixel(unsigned int _x, unsigned int _y, int _value){
     this->m_picture[_x][_y] = _value;
-
-    return this;
 }
 
 void PictureColor::negative(){

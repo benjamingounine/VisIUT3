@@ -21,7 +21,7 @@ class PictureColor : public Picture{
         unsigned int ** getPictureColor()const;
         unsigned int getPixel(unsigned int _x,unsigned int _y) const;
         PictureColor * setPictureColor(unsigned int ** _picture);
-        virtual PictureColor * setPixel(unsigned int _x, unsigned int _y, int _value);
+        virtual void setPixel(unsigned int _x, unsigned int _y, int _value);
         virtual void negative();
         virtual void verticalMirror();
         virtual void horizontalMirror();
