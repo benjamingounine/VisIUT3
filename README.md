@@ -8,5 +8,3 @@ Voici un projet qui a débuté en 2009 par cinq étudiant en informatique
 
 Visiut3 est la refonte d'un logiciel de traitement d'images.
 
-Plus de précisions plus tard.
-
